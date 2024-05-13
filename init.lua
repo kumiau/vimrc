@@ -1,3 +1,6 @@
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/nvim/?.lua"
+require 'term'
+
 local set = vim.opt
 local Plug = vim.fn['plug#']
 
@@ -29,6 +32,10 @@ set.textwidth=0
 set.wrapmargin=0
 set.number=true
 
+-- terminal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set({ 'n', 't' }, "<S-Tab>", ToggleTerminal)
+
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
@@ -41,6 +48,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'pmizio/typescript-tools.nvim'
+Plug 'nvimdev/lspsaga.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+
 
 vim.call('plug#end')
 
@@ -65,3 +75,7 @@ nvim_lsp.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" }
 }
+
+-- LspSaga
+local lspsaga = require('lspsaga') 
+lspsaga.setup({    lightbulb = { enable = false }})
