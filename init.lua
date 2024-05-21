@@ -44,15 +44,25 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
 Plug 'frazrepo/vim-rainbow'
-Plug 'itchyny/lightline.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'pmizio/typescript-tools.nvim'
 Plug 'nvimdev/lspsaga.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 
-
 vim.call('plug#end')
+
+-- Lualine
+
+require('lualine').setup {
+  options = { theme = 'molokai' },
+  sections = {
+    lualine_c = {{'filename', path = 1}}
+  }
+}
+
+-- TypeScript
 
 local status, nvim_lsp = pcall(require, "lspconfig")
 
@@ -69,7 +79,6 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- TypeScript
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
@@ -78,4 +87,4 @@ nvim_lsp.tsserver.setup {
 
 -- LspSaga
 local lspsaga = require('lspsaga') 
-lspsaga.setup({    lightbulb = { enable = false }})
+lspsaga.setup({lightbulb = { enable = false }})
