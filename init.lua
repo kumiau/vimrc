@@ -121,14 +121,10 @@ vim.diagnostic.config{
   float={border=_border}
 }
 
--- Biome
-nvim_lsp.biome.setup {}
-
 -- Diagnostics navigation
 vim.api.nvim_create_user_command('Dnext', vim.diagnostic.goto_next, {})
 vim.api.nvim_create_user_command('Dprev', vim.diagnostic.goto_prev, {})
 vim.api.nvim_create_user_command('Dopen', vim.diagnostic.open_float, {})
-
 
 -- LspSaga
 local lspsaga = require('lspsaga') 
