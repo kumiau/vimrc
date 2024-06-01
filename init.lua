@@ -41,7 +41,7 @@ vim.keymap.set({ 'n', 't' }, "<S-Tab>", ToggleTerminal)
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -69,6 +69,10 @@ require("catppuccin").setup {
   },
 }
 vim.cmd [[colorscheme catppuccin-macchiato]]
+
+-- Autopairs
+
+require("nvim-autopairs").setup {}
 
 -- Lualine
 
