@@ -12,6 +12,7 @@ vim.cmd [[
   syntax enable
 ]]
 vim.wo.wrap = false
+vim.api.nvim_set_option("clipboard", "unnamedplus")
 
 -- size of a hard tabstop
 set.tabstop=2
@@ -30,7 +31,7 @@ set.smartindent=true
 
 -- always uses spaces instead of tab characters
 set.expandtab=true
-set.textwidth=0 
+set.textwidth=0
 set.wrapmargin=0
 set.number=true
 
@@ -38,6 +39,8 @@ set.number=true
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set({ 'n', 't' }, "<S-Tab>", ToggleTerminal)
 
+-- disable mouse
+vim.opt.mouse = ""
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
@@ -131,5 +134,6 @@ vim.api.nvim_create_user_command('Dprev', vim.diagnostic.goto_prev, {})
 vim.api.nvim_create_user_command('Dopen', vim.diagnostic.open_float, {})
 
 -- LspSaga
-local lspsaga = require('lspsaga') 
+local lspsaga = require('lspsaga')
 lspsaga.setup({lightbulb = { enable = false }})
+
